@@ -1,8 +1,4 @@
-# Getting Started with Headless Sentinel
-
-## What You've Received
-
-This is a **complete, production-ready** Python application for Windows log aggregation and analysis. All files are ready to use - no "samples" or "snippets."
+# Getting Started with Headless Sentine
 
 ### File Structure
 

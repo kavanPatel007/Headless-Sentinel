@@ -1,4 +1,4 @@
-# Getting Started with Headless Sentine
+# Getting Started with Headless Sentinel
 
 ### File Structure
 

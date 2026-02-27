@@ -2,9 +2,9 @@ import winrm
 import time
 import os
 
-target_ip = "172.17.157.193"
-username = os.getenv('SENTINEL_DEFAULT_USERNAME', 'mitix')
-password = os.getenv('SENTINEL_DEFAULT_PASSWORD', 'abhi')
+target_ip = "xy.xy.xy.xy" #replace xy with target machine ip addess
+username = os.getenv('SENTINEL_DEFAULT_USERNAME', 'username') # replace username with target machine username
+password = os.getenv('SENTINEL_DEFAULT_PASSWORD', 'password') # replace password with target machine password
 
 # Very simple test
 simple_script = """
@@ -46,4 +46,5 @@ try:
     print(f"Output: {result.std_out.decode('utf-8')}")
     
 except Exception as e:
+
     print(f"✗ Error: {e}")

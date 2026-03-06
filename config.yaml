@@ -1,0 +1,58 @@
+database:
+  path: sentinel.duckdb
+  retention_days: 90
+collection:
+  log_types:
+  - System
+  - Security
+  - Application
+  hours_back: 0.1
+  max_events: 50
+  concurrent_hosts: 10
+targets:
+- ip: xy.xy.xy.xy   #put target machine IP here
+  port: 5985
+  transport: ntlm
+  timeout: 180
+  credentials:
+    username: username  #put target machine username here
+    password: password   #put target machine password here
+alerts:
+  enabled: true
+  check_interval: 60
+  rules:
+  - name: Failed Login Attempts
+    event_ids:
+    - 4625
+    threshold: 5
+    actions:
+    - type: webhook
+      url: https://discord.com/api/webhooks/YOUR_WEBHOOK
+      type_hint: discord
+  - name: Privilege Escalation
+    event_ids:
+    - 4672
+    - 4673
+    threshold: 1
+    actions:
+    - type: webhook
+      url: https://hooks.slack.com/services/YOUR_WEBHOOK
+      type_hint: slack
+  - name: Account Lockout
+    event_ids:
+    - 4740
+    threshold: 1
+    actions:
+    - type: remediation
+      script: net user $USERNAME /unlock
+  - name: Critical System Errors
+    severity: Critical
+    threshold: 1
+    actions:
+    - type: webhook
+      url: YOUR_NOTIFICATION_URL
+reporting:
+  enabled: true
+  schedule: 0 8 * * *
+  format: markdown
+  output_dir: ./reports

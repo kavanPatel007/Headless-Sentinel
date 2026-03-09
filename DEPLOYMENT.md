@@ -6,7 +6,7 @@
 
 ```bash
 # Clone repository
-git clone https://github.com/yourorg/headless-sentinel.git
+git clone https://github.com/kavanpatel007/headless-sentinel.git
 cd headless-sentinel
 
 # Install dependencies
